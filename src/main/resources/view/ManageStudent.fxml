@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageStudentController">
+
+   <children>
+      <DatePicker fx:id="dateDob" layoutX="574.0" layoutY="85.0" prefHeight="25.0" prefWidth="237.0" promptText="Birth of Date" />
+      <ComboBox fx:id="cmbGender" layoutX="843.0" layoutY="85.0" prefHeight="25.0" prefWidth="252.0" promptText="Gender" />
+      <Label layoutX="47.0" layoutY="55.0" text="Student Details" />
+      <ComboBox fx:id="cmbClassType" layoutX="1118.0" layoutY="85.0" prefHeight="25.0" prefWidth="252.0" promptText="Class Type" />
+      <ComboBox fx:id="cmbClassSchedule" layoutX="1118.0" layoutY="120.0" prefHeight="25.0" prefWidth="252.0" promptText="Class Schedule" />
+      <Label layoutX="50.0" layoutY="137.0" text="Parent Details" />
+      <Label layoutX="652.0" layoutY="20.0" text="Student Registration" />
+      <TableView fx:id="tblStudentList" layoutY="288.0" prefHeight="541.0" prefWidth="1427.0">
+        <columns>
+          <TableColumn fx:id="colFirstName" prefWidth="99.0" text="First Name" />
+          <TableColumn fx:id="colLastName" prefWidth="136.0" text="Last Name" />
+            <TableColumn fx:id="colDob" prefWidth="136.0" text="DOB" />
+            <TableColumn fx:id="colGender" prefWidth="136.0" text="Gender" />
+            <TableColumn fx:id="colClassType" prefWidth="136.0" text="Class Type" />
+            <TableColumn fx:id="colCassSchedule" prefWidth="136.0" text="Class Schedule" />
+            <TableColumn fx:id="colParentName" prefWidth="136.0" text="Parent Name" />
+            <TableColumn fx:id="colMobile" prefWidth="136.0" text="Mobile" />
+            <TableColumn fx:id="colEmail" prefWidth="136.0" text="Email" />
+            <TableColumn fx:id="colAddress" prefWidth="239.0" text="Address" />
+        </columns>
+      </TableView>
+      <ComboBox fx:id="cmbAdultChild" layoutX="843.0" layoutY="120.0" prefHeight="25.0" prefWidth="252.0" promptText="Adult | Child" />
+      <TextField fx:id="txtFirstNameId" layoutX="50.0" layoutY="85.0" prefHeight="25.0" prefWidth="237.0" promptText="First name" />
+      <TextField fx:id="txtLastNameId" layoutX="301.0" layoutY="85.0" prefHeight="25.0" prefWidth="237.0" promptText="LastName" />
+      <TextField fx:id="txtParentNameId" layoutX="50.0" layoutY="167.0" prefHeight="25.0" prefWidth="237.0" promptText="Parent Name" />
+      <TextField fx:id="txtMobileNoId" layoutX="301.0" layoutY="167.0" prefHeight="25.0" prefWidth="237.0" promptText="Mobile" />
+      <TextField fx:id="txtEmailId" layoutX="574.0" layoutY="167.0" prefHeight="25.0" prefWidth="237.0" promptText="Email" />
+      <TextArea fx:id="txtAddressId" layoutX="843.0" layoutY="159.0" prefHeight="54.0" prefWidth="527.0" promptText="Address" />
+      <Button layoutX="1278.0" layoutY="234.0" mnemonicParsing="false" onAction="#btnSaveStudentOnAction" prefHeight="33.0" prefWidth="92.0" style="-fx-background-color: #AFE1AF;" text="Save" />
+   </children>
+</AnchorPane>

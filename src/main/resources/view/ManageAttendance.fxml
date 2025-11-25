@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="830.0" prefWidth="1427.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MonthlyAttendanceController">
+
+    <children>
+
+        <!-- You can move this DatePicker freely -->
+        <DatePicker fx:id="monthPicker" layoutX="24.0" layoutY="81.0" prefWidth="250" />
+
+        <!-- You can move this Label freely -->
+        <Label layoutX="552.0" layoutY="1.0" style="-fx-font-size: 26px;" text="Monthly Attendance System" />
+
+        <!-- The TableView also moves freely -->
+        <TableView fx:id="attendanceTable" editable="true" layoutX="3.0" layoutY="120.0" prefHeight="709.0" prefWidth="1419.0">
+
+            <columns>
+
+                <TableColumn fx:id="studentIdCol" prefWidth="73.0" text="ID" />
+                <TableColumn fx:id="studentNameCol" prefWidth="187.0" text="Name" />
+                <TableColumn fx:id="classScheduleCol" prefWidth="192.0" text="Class Schedule" />
+
+                <!-- Days 1–31 -->
+                <TableColumn fx:id="day1Col" prefWidth="33.0" text="1" />
+                <TableColumn fx:id="day2Col" prefWidth="33.0" text="2" />
+                <TableColumn fx:id="day3Col" prefWidth="33.0" text="3" />
+                <TableColumn fx:id="day4Col" prefWidth="33.0" text="4" />
+                <TableColumn fx:id="day5Col" prefWidth="33.0" text="5" />
+                <TableColumn fx:id="day6Col" prefWidth="33.0" text="6" />
+                <TableColumn fx:id="day7Col" prefWidth="33.0" text="7" />
+                <TableColumn fx:id="day8Col" prefWidth="33.0" text="8" />
+                <TableColumn fx:id="day9Col" prefWidth="33.0" text="9" />
+                <TableColumn fx:id="day10Col" prefWidth="33.0" text="10" />
+                <TableColumn fx:id="day11Col" prefWidth="33.0" text="11" />
+                <TableColumn fx:id="day12Col" prefWidth="33.0" text="12" />
+                <TableColumn fx:id="day13Col" prefWidth="33.0" text="13" />
+                <TableColumn fx:id="day14Col" prefWidth="33.0" text="14" />
+                <TableColumn fx:id="day15Col" prefWidth="33.0" text="15" />
+                <TableColumn fx:id="day16Col" prefWidth="33.0" text="16" />
+                <TableColumn fx:id="day17Col" prefWidth="33.0" text="17" />
+                <TableColumn fx:id="day18Col" prefWidth="33.0" text="18" />
+                <TableColumn fx:id="day19Col" prefWidth="33.0" text="19" />
+                <TableColumn fx:id="day20Col" prefWidth="33.0" text="20" />
+                <TableColumn fx:id="day21Col" prefWidth="33.0" text="21" />
+                <TableColumn fx:id="day22Col" prefWidth="33.0" text="22" />
+                <TableColumn fx:id="day23Col" prefWidth="33.0" text="23" />
+                <TableColumn fx:id="day24Col" prefWidth="33.0" text="24" />
+                <TableColumn fx:id="day25Col" prefWidth="33.0" text="25" />
+                <TableColumn fx:id="day26Col" prefWidth="33.0" text="26" />
+                <TableColumn fx:id="day27Col" prefWidth="33.0" text="27" />
+                <TableColumn fx:id="day28Col" prefWidth="33.0" text="28" />
+                <TableColumn fx:id="day29Col" prefWidth="33.0" text="29" />
+                <TableColumn fx:id="day30Col" prefWidth="33.0" text="30" />
+                <TableColumn fx:id="day31Col" prefWidth="33.0" text="31" />
+
+            </columns>
+        </TableView>
+
+    </children>
+</AnchorPane>
