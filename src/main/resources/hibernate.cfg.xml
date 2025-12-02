@@ -1,32 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-configuration PUBLIC
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
-
+        "https://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 
 <hibernate-configuration>
-<session-factory>
-<!-- Database connection settings -->
-<property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/attendance_db?createDatabaseIfNotExist=true</property>
-<property name="hibernate.connection.username">root</property>
-<property name="hibernate.connection.password">1234</property>
+    <session-factory>
 
-<!-- JDBC connection pool -->
-<property name="hibernate.connection.pool_size">5</property>
+        <!-- Database connection -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/student_management_db?createDatabaseIfNotExist=true</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">1234</property>
 
-<!-- SQL dialect -->
-    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!-- Hibernate dialect for MySQL (Hibernate 6) -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 
+        <!-- Show SQL -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
 
-<!-- Show SQL -->
-<property name="hibernate.show_sql">true</property>
-<property name="hibernate.format_sql">true</property>
+        <!-- Auto schema update -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
 
-<!-- Automatically create/update tables -->
-<property name="hibernate.hbm2ddl.auto">create</property>
+        <!-- Mapped entity -->
+        <mapping class="entity.Student"/>
 
-
-    <!-- List of annotated classes -->
-<mapping class="entity.Student"/>
-</session-factory>
+    </session-factory>
 </hibernate-configuration>

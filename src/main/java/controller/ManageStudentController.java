@@ -121,26 +121,26 @@ public class ManageStudentController {
         // DATEPICKER
         LocalDate dob       = dateDob.getValue();
 
-        StudentDTO student = StudentDTO.builder()
-                .studentCode(manageStudentService.getStudentCode())
-                .firstName(firstName)
-                .lastName(lastName)
-                .gender(gender.toString())
-                .requestedClassScheduleDateTime(requestedClassScheduleDateTIme.toString())
-                .classType(classType.toString())
-                .dob(dob)
-                .email(email)
-                .personType(personType.toString())
-                .mobileWhatsApp(mobileNo)
-                .parentName(parentName)
-                .address(address)
-                .status("ACTIVE")
-                .enrollmentDate(LocalDate.now())
-                .notes("A sample note can be added here!") //a note filed has to be added in client and let the value to be enter by user
-                .createdAt(LocalDateTime.now())
-                .build();
+//        StudentDTO student = StudentDTO.builder()
+//                .studentCode(manageStudentService.getStudentCode())
+//                .firstName(firstName)
+//                .lastName(lastName)
+//                .gender(gender.toString())
+//                .requestedClassScheduleDateTime(requestedClassScheduleDateTIme.toString())
+//                .classType(classType.toString())
+//                .dob(dob)
+//                .email(email)
+//                .personType(personType.toString())
+//                .mobileWhatsApp(mobileNo)
+//                .parentName(parentName)
+//                .address(address)
+//                .status("ACTIVE")
+//                .enrollmentDate(LocalDate.now())
+//                .notes("A sample note can be added here!") //a note filed has to be added in client and let the value to be enter by user
+//                .createdAt(LocalDateTime.now())
+//                .build();
 
-                manageStudentService.saveStudent(student);
+                manageStudentService.saveStudent(new StudentDTO());
 
 
     }

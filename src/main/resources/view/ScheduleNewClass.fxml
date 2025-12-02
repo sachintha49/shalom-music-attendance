@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.ManageScheduleClassController"
+            prefWidth="900" prefHeight="650">
+
+    <top>
+        <Label text="Create Class Schedule"
+               style="-fx-font-size: 24px; -fx-font-weight: bold;"
+               BorderPane.alignment="CENTER" />
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true">
+            <content>
+                <VBox spacing="20">
+                    <padding>
+                        <Insets top="20" right="20" bottom="20" left="20"/>
+                    </padding>
+
+                    <TitledPane text="Class Information" expanded="true">
+                        <content>
+                            <VBox spacing="10">
+                                <padding>
+                                    <Insets top="10" right="10" bottom="10" left="10"/>
+                                </padding>
+
+                                <HBox spacing="20">
+                                    <Label text="Schedule Name:"/>
+                                    <TextField fx:id="txtScheduleName" promptText="e.g., Grade 8 Math Class"/>
+                                </HBox>
+
+                                <HBox spacing="20">
+                                    <Label text="Class Type:"/>
+                                    <ComboBox fx:id="cmbClassType" promptText="Select type">
+                                        <items>
+                                            <FXCollections fx:factory="observableArrayList">
+                                                <String fx:value="Online"/>
+                                                <String fx:value="Physical"/>
+                                            </FXCollections>
+                                        </items>
+                                    </ComboBox>
+                                </HBox>
+
+                                <HBox spacing="20">
+                                    <Label text="Instructor Name:"/>
+                                    <TextField fx:id="txtInstructor" promptText="Enter instructor"/>
+                                </HBox>
+
+                                <HBox spacing="20" fx:id="onlineLinkBox">
+                                    <Label text="Zoom Link:"/>
+                                    <TextField fx:id="txtZoomLink" prefWidth="300" promptText="https://zoom.us/"/>
+                                </HBox>
+
+                            </VBox>
+                        </content>
+                    </TitledPane>
+
+                    <TitledPane text="Schedule Details" expanded="true">
+                        <content>
+                            <VBox spacing="15">
+                                <padding>
+                                    <Insets top="10" right="10" bottom="10" left="10"/>
+                                </padding>
+
+                                <HBox spacing="20">
+                                    <Label text="Start Date:"/>
+                                    <DatePicker fx:id="dpStartDate"/>
+                                    <Label text="End Date:"/>
+                                    <DatePicker fx:id="dpEndDate"/>
+                                </HBox>
+
+                                <HBox spacing="20">
+                                    <Label text="Start Time:"/>
+                                    <TextField fx:id="txtStartTime" promptText="HH:MM"/>
+                                    <Label text="End Time:"/>
+                                    <TextField fx:id="txtEndTime" promptText="HH:MM"/>
+                                </HBox>
+
+                                <Label text="Select Days:" style="-fx-font-weight: bold;"/>
+
+                                <HBox spacing="10">
+                                    <CheckBox fx:id="chkMon" text="Mon"/>
+                                    <CheckBox fx:id="chkTue" text="Tue"/>
+                                    <CheckBox fx:id="chkWed" text="Wed"/>
+                                    <CheckBox fx:id="chkThu" text="Thu"/>
+                                    <CheckBox fx:id="chkFri" text="Fri"/>
+                                    <CheckBox fx:id="chkSat" text="Sat"/>
+                                    <CheckBox fx:id="chkSun" text="Sun"/>
+                                </HBox>
+
+                            </VBox>
+                        </content>
+                    </TitledPane>
+
+                    <TitledPane text="Students" expanded="true">
+                        <content>
+                            <VBox spacing="15">
+                                <padding>
+                                    <Insets top="10" right="10" bottom="10" left="10"/>
+                                </padding>
+
+                                <HBox spacing="10">
+                                    <Label text="Add Student:"/>
+                                    <TextField fx:id="txtSearchStudent" promptText="Name or ID"/>
+                                    <Button text="Add" onAction="#onAddStudent"/>
+                                </HBox>
+
+                                <TableView fx:id="tblStudents" prefHeight="200">
+                                    <columns>
+                                        <TableColumn fx:id="colStudentName" text="Student Name" prefWidth="200"/>
+                                        <TableColumn fx:id="colParentNumber" text="Parent Number" prefWidth="150"/>
+                                        <TableColumn fx:id="colAction" text="Remove" prefWidth="100"/>
+                                    </columns>
+                                </TableView>
+
+                            </VBox>
+                        </content>
+                    </TitledPane>
+
+                    <TitledPane text="Notification and Reminders" expanded="true">
+                        <content>
+                            <VBox spacing="15">
+                                <padding>
+                                    <Insets top="10" right="10" bottom="10" left="10"/>
+                                </padding>
+
+                                <HBox spacing="20">
+                                    <Label text="Reminder Time:"/>
+                                    <ComboBox fx:id="cmbReminder">
+                                        <items>
+                                            <FXCollections fx:factory="observableArrayList">
+                                                <String fx:value="5 minutes"/>
+                                                <String fx:value="10 minutes"/>
+                                                <String fx:value="30 minutes"/>
+                                                <String fx:value="1 hour"/>
+                                                <String fx:value="2 hours"/>
+                                                <String fx:value="1 day"/>
+                                            </FXCollections>
+                                        </items>
+                                    </ComboBox>
+                                </HBox>
+
+                                <HBox spacing="20">
+                                    <Label text="Notes:"/>
+                                    <TextArea fx:id="txtNotes" prefWidth="300" prefHeight="100"/>
+                                </HBox>
+
+                            </VBox>
+                        </content>
+                    </TitledPane>
+
+                    <Button text="Save Schedule"
+                            style="-fx-font-size: 18px; -fx-padding: 10 20;"
+                            onAction="#onSaveSchedule"/>
+
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+
+</BorderPane>
