@@ -1,72 +1,105 @@
 package entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.ToString;
-
+import lombok.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "students")  // Table name in DB
+@Table(name = "students")
 @Data
-@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "student_id")
-    private Long studentId;
+    private Long id;
 
-    @Column(name = "student_code", unique = true, nullable = false)
-    private String studentCode;
-
+    // Student Information
     @Column(name = "first_name", nullable = false)
     private String firstName;
 
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String gender;
+    private Gender gender;
 
-    @Column(name = "dob")
-    private LocalDate dob;
+    @Column(nullable = false)
+    private LocalDate birthday;
 
-    @Column(name = "mobile_whatsapp")
-    private String mobileWhatsApp;
+    @Column(name = "school_grade_or_profession", nullable = false)
+    private String schoolGradeOrProfession;
 
-    @Column
-    private String email;
+    // Contact Person Information
+    @Enumerated(EnumType.STRING)
+    @Column(name = "contact_person_title")
+    private ContactTitle contactPersonTitle;
 
-    @Column(name = "parent_name")
-    private String parentName;
+    @Column(name = "contact_person_name", nullable = false)
+    private String contactPersonName;
 
-    @Column(columnDefinition = "TEXT")
-    private String notes;
+    @Column(name = "contact_person_number", nullable = false)
+    private String contactPersonNumber;
 
-    @Column(name = "class_type")
-    private String classType;
+    @Column(name = "contact_person_email", nullable = false)
+    private String contactPersonEmail;
 
-    @Column(name = "person_type")
-    private String personType;
-
-    @Column(name = "enrollment_date")
-    private LocalDate enrollmentDate;
-
-    @Column
-    private String status;
-
-    @Column(columnDefinition = "TEXT")
+    @Column(nullable = false)
     private String address;
 
-    @Column(name = "requested_class_schedule_datetime")
-    private LocalDateTime requestedClassScheduleDateTime;
+    // Course & Enrollment Information
+    @Column(name = "has_student_learnt_music_before")
+    private HasStudentLearntMusicBefore hasStudentLearntMusicBefore;
 
-    @Column(name = "created_at")
-    private LocalDateTime createdAt;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "delivery_mode", nullable = false)
+    private DeliveryMode deliveryMode;
 
-    @Column(name = "updated_at")
-    private LocalDateTime updatedAt;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "class_categories", nullable = false)
+    private ClassCategories classCategories;
 
+    // Learning Goals & Notes
+    @Column(length = 1000)
+    private String learningGoals;
+
+    @Column(length = 1000)
+    private String specialNotes;
+
+    // -------------------- ENUMS --------------------
+    public enum Gender {
+        MALE, FEMALE, OTHER
+    }
+
+    public enum ContactTitle {
+        MR, MRS, MS, DR, PROF, OTHER
+    }
+
+    public enum DeliveryMode {
+        ONLINE,
+        PHYSICAL
+    }
+
+    public enum CourseEnrolling {
+        GUITAR_UKULELE_VOCAL, PIANO_VOCAL
+    }
+
+    public enum ClassCategories {
+        // Online Classes
+        INTERNATIONAL_ONLINE_INDIVIDUAL_ALL_CATEGORIES,
+        SCHOOL_CLASS_ONLINE_GRADE_6_PLUS_GROUP,
+        ELDERS_CLASS_ONLINE_18_PLUS_GROUP,
+
+        // Physical Classes
+        KIDS_CLASS_PHYSICAL_4_10_GROUP,
+        SCHOOL_CLASS_PHYSICAL_10_18_GROUP,
+        ELDERS_CLASS_PHYSICAL_18_PLUS_PROFESSIONALS_GROUP
+    }
+
+    public enum HasStudentLearntMusicBefore {
+        YES,NO,A_LITTLE_BIT_BASIC_LEVEL
+    }
 }

@@ -6,6 +6,8 @@ import org.hibernate.Session;
 import service.ManageStudentService;
 import util.HibernateUtil;
 
+import java.time.LocalDate;
+
 public class ManageStudentServiceImpl implements ManageStudentService {
 
 
@@ -17,9 +19,15 @@ public class ManageStudentServiceImpl implements ManageStudentService {
 
         student.setFirstName("Sachin");
         student.setLastName("Punchihewa");
-        student.setEmail("snidhajit@gmail.");
-student.setGender("Male");
-student.setStudentCode("123");
+        student.setContactPersonEmail("snidhajit@gmail.");
+        student.setGender(Student.Gender.MALE);
+        student.setAddress("address");
+        student.setBirthday(LocalDate.now());
+        student.setClassCategories(Student.ClassCategories.KIDS_CLASS_PHYSICAL_4_10_GROUP);
+        student.setContactPersonName("Rebeccah");
+        student.setContactPersonNumber("0778787336");
+        student.setDeliveryMode(Student.DeliveryMode.ONLINE);
+        student.setSchoolGradeOrProfession("A/L");
         session.persist(student);
         session.getTransaction().commit();
         session.close();
