@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -8,39 +9,100 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageStudentController">
+<BorderPane prefHeight="830" prefWidth="1427" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageStudentController">
 
-   <children>
-      <DatePicker fx:id="dateDob" layoutX="574.0" layoutY="85.0" prefHeight="25.0" prefWidth="237.0" promptText="Birth of Date" />
-      <ComboBox fx:id="cmbGender" layoutX="843.0" layoutY="85.0" prefHeight="25.0" prefWidth="252.0" promptText="Gender" />
-      <Label layoutX="47.0" layoutY="55.0" text="Student Details" />
-      <ComboBox fx:id="cmbClassType" layoutX="1118.0" layoutY="85.0" prefHeight="25.0" prefWidth="252.0" promptText="Class Type" />
-      <ComboBox fx:id="cmbClassSchedule" layoutX="1118.0" layoutY="120.0" prefHeight="25.0" prefWidth="252.0" promptText="Class Schedule" />
-      <Label layoutX="50.0" layoutY="137.0" text="Parent Details" />
-      <Label layoutX="652.0" layoutY="20.0" text="Student Registration" />
-      <TableView fx:id="tblStudentList" layoutY="288.0" prefHeight="541.0" prefWidth="1427.0">
-        <columns>
-          <TableColumn fx:id="colFirstName" prefWidth="99.0" text="First Name" />
-          <TableColumn fx:id="colLastName" prefWidth="136.0" text="Last Name" />
-            <TableColumn fx:id="colDob" prefWidth="136.0" text="DOB" />
-            <TableColumn fx:id="colGender" prefWidth="136.0" text="Gender" />
-            <TableColumn fx:id="colClassType" prefWidth="136.0" text="Class Type" />
-            <TableColumn fx:id="colCassSchedule" prefWidth="136.0" text="Class Schedule" />
-            <TableColumn fx:id="colParentName" prefWidth="136.0" text="Parent Name" />
-            <TableColumn fx:id="colMobile" prefWidth="136.0" text="Mobile" />
-            <TableColumn fx:id="colEmail" prefWidth="136.0" text="Email" />
-            <TableColumn fx:id="colAddress" prefWidth="239.0" text="Address" />
-        </columns>
-      </TableView>
-      <ComboBox fx:id="cmbAdultChild" layoutX="843.0" layoutY="120.0" prefHeight="25.0" prefWidth="252.0" promptText="Adult | Child" />
-      <TextField fx:id="txtFirstNameId" layoutX="50.0" layoutY="85.0" prefHeight="25.0" prefWidth="237.0" promptText="First name" />
-      <TextField fx:id="txtLastNameId" layoutX="301.0" layoutY="85.0" prefHeight="25.0" prefWidth="237.0" promptText="LastName" />
-      <TextField fx:id="txtParentNameId" layoutX="50.0" layoutY="167.0" prefHeight="25.0" prefWidth="237.0" promptText="Parent Name" />
-      <TextField fx:id="txtMobileNoId" layoutX="301.0" layoutY="167.0" prefHeight="25.0" prefWidth="237.0" promptText="Mobile" />
-      <TextField fx:id="txtEmailId" layoutX="574.0" layoutY="167.0" prefHeight="25.0" prefWidth="237.0" promptText="Email" />
-      <TextArea fx:id="txtAddressId" layoutX="843.0" layoutY="159.0" prefHeight="54.0" prefWidth="527.0" promptText="Address" />
-      <Button layoutX="1278.0" layoutY="234.0" mnemonicParsing="false" onAction="#btnSaveStudentOnAction" prefHeight="33.0" prefWidth="92.0" style="-fx-background-color: #AFE1AF;" text="Save" />
-   </children>
-</AnchorPane>
+    <center>
+        <VBox prefHeight="830" prefWidth="1427" spacing="15" style="-fx-background-color:#F0F4FF;">
+
+            <!-- ADD NEW STUDENT FORM (top part) -->
+            <VBox spacing="15" style="-fx-background-color:white; -fx-background-radius:12;                                       -fx-effect:dropshadow(two-pass-box, rgba(0,0,0,0.15), 8, 0, 0, 3);" VBox.vgrow="NEVER">
+                <padding>
+                    <Insets bottom="20" left="20" right="20" top="20" />
+                </padding>
+
+                <Label style="-fx-font-size:24px; -fx-font-weight:bold; -fx-text-fill:#6A82FB;" text="Add New Student" />
+
+                <GridPane hgap="20" vgap="15">
+
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="33" />
+                        <ColumnConstraints percentWidth="33" />
+                        <ColumnConstraints percentWidth="34" />
+                    </columnConstraints>
+
+                    <!-- LEFT COLUMN -->
+                    <VBox spacing="12" GridPane.columnIndex="0">
+                        <TextField fx:id="txtFirstName" promptText="First Name" />
+                        <TextField fx:id="txtLastName" promptText="Last Name" />
+                        <HBox spacing="10">
+                            <ComboBox fx:id="cmbGender" prefHeight="25.0" prefWidth="165.0" promptText="Gender" HBox.hgrow="ALWAYS" />
+                            <DatePicker fx:id="dateBirthday" prefHeight="25.0" prefWidth="267.0" promptText="Birthday" HBox.hgrow="ALWAYS" />
+                        </HBox>
+                        <TextField fx:id="txtSchoolGradeOrProfession" promptText="Grade / Profession" />
+                    </VBox>
+
+                    <!-- MIDDLE COLUMN -->
+                    <VBox spacing="12" GridPane.columnIndex="1">
+                        <HBox spacing="10">
+                            <ComboBox fx:id="cmbContactTitle" prefWidth="90" promptText="Title" />
+                            <TextField fx:id="txtContactPersonName" promptText="Contact Name" HBox.hgrow="ALWAYS" />
+                        </HBox>
+                        <TextField fx:id="txtContactPersonNumber" promptText="Phone" />
+                        <TextField fx:id="txtContactPersonEmail" promptText="Email" />
+                        <TextArea fx:id="txtAddress" prefRowCount="2" promptText="Address" />
+                    </VBox>
+
+                    <!-- RIGHT COLUMN -->
+                    <VBox prefHeight="137.0" prefWidth="458.0" spacing="12" style="-fx-background-color:#FFF0F5; -fx-background-radius:10;" GridPane.columnIndex="2">
+                        <padding>
+                            <Insets bottom="15" left="15" right="15" top="15" />
+                        </padding>
+                        <HBox spacing="10">
+                            <ComboBox fx:id="cmbHasLearntMusicBefore" promptText="Learnt Before" HBox.hgrow="ALWAYS" />
+                            <ComboBox fx:id="cmbDeliveryMode" promptText="Delivery Mode" HBox.hgrow="ALWAYS" />
+                           <ComboBox fx:id="cmbClassCategories" prefHeight="25.0" prefWidth="166.0" promptText="Class Category" />
+                        </HBox>
+                        <!-- SAVE BUTTON INSIDE BOX -->
+                        <Button maxWidth="Infinity" onAction="#btnSaveStudentOnAction" prefHeight="33.0" prefWidth="1009.0" style="-fx-background-color: #FFF0F5; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 6 0; -fx-background-radius: 10;" />
+                  <Button maxWidth="Infinity" onAction="#btnSaveStudentOnAction" prefHeight="33.0" prefWidth="246.0" style="-fx-background-color:#6A82FB; -fx-text-fill:white;                                        -fx-font-size:14px; -fx-padding:6 0; -fx-background-radius:10;" text="Save Student" />
+                    </VBox>
+               <rowConstraints>
+                  <RowConstraints />
+               </rowConstraints>
+
+                </GridPane>
+            </VBox>
+
+            <!-- STUDENT LIST TABLEVIEW (bottom part) -->
+            <TableView fx:id="tblStudents" style="-fx-background-color:white; -fx-background-radius:10;                               -fx-effect:dropshadow(two-pass-box, rgba(0,0,0,0.12), 10, 0, 0, 3);" VBox.vgrow="ALWAYS">
+
+                <columns>
+                    <TableColumn fx:id="colFirstName" prefWidth="120" text="First Name" />
+                    <TableColumn fx:id="colLastName" prefWidth="120" text="Last Name" />
+                    <TableColumn fx:id="colGender" prefWidth="80" text="Gender" />
+                    <TableColumn fx:id="colBirthday" prefWidth="100" text="Birthday" />
+                    <TableColumn fx:id="colSchoolGradeOrProfession" prefWidth="150" text="Grade" />
+                    <TableColumn fx:id="colContactPersonName" prefWidth="150" text="Contact Name" />
+                    <TableColumn fx:id="colContactPersonNumber" prefWidth="120" text="Phone" />
+                    <TableColumn fx:id="colContactPersonEmail" prefWidth="150" text="Email" />
+                    <TableColumn fx:id="colAddress" prefWidth="220" text="Address" />
+                    <TableColumn fx:id="colHasLearntMusicBefore" prefWidth="130" text="Learnt Before" />
+                    <TableColumn fx:id="colDeliveryMode" prefWidth="120" text="Delivery Mode" />
+                    <TableColumn fx:id="colClassCategories" prefWidth="200" text="Class Category" />
+
+                    <!-- Actions Column -->
+                    <TableColumn fx:id="colActions" prefWidth="150" text="Actions" />
+                </columns>
+
+            </TableView>
+        </VBox>
+    </center>
+
+</BorderPane>

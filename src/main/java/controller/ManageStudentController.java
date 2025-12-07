@@ -1,65 +1,56 @@
 package controller;
 
-import dto.StudentDTO;
-import enums.ClassScheduleDateTime;
+import entity.Student;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import service.Impl.ManageStudentServiceImpl;
 import service.ManageStudentService;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class ManageStudentController {
 
     @FXML
-    private ComboBox<String> cmbAdultChild;
+    private ComboBox<?> cmbClassCategories;
 
     @FXML
-    private ComboBox<String> cmbClassSchedule;
+    private ComboBox<?> cmbContactTitle;
 
     @FXML
-    private ComboBox<String> cmbClassType;
+    private ComboBox<?> cmbDeliveryMode;
 
     @FXML
-    private ComboBox<String> cmbGender;
+    private ComboBox<?> cmbGender;
+
+    @FXML
+    private ComboBox<?> cmbHasLearntMusicBefore;
+
+    @FXML
+    private TableColumn<?, ?> colActions;
 
     @FXML
     private TableColumn<?, ?> colAddress;
 
     @FXML
-    private TableColumn<?, ?> colCassSchedule;
+    private TableColumn<?, ?> colBirthday;
 
     @FXML
-    private TableColumn<?, ?> colClassType;
+    private TableColumn<?, ?> colClassCategories;
 
     @FXML
-    private TableColumn<?, ?> colDob;
+    private TableColumn<?, ?> colContactPersonEmail;
 
     @FXML
-    private TextArea txtAddressId;
+    private TableColumn<?, ?> colContactPersonName;
 
     @FXML
-    private TextField txtEmailId;
+    private TableColumn<?, ?> colContactPersonNumber;
 
     @FXML
-    private TextField txtFirstNameId;
-
-    @FXML
-    private TextField txtLastNameId;
-
-    @FXML
-    private TextField txtMobileNoId;
-
-    @FXML
-    private TextField txtParentNameId;
-
-    @FXML
-    private DatePicker dateDob;
-
-    @FXML
-    private TableColumn<?, ?> colEmail;
+    private TableColumn<?, ?> colDeliveryMode;
 
     @FXML
     private TableColumn<?, ?> colFirstName;
@@ -68,81 +59,57 @@ public class ManageStudentController {
     private TableColumn<?, ?> colGender;
 
     @FXML
+    private TableColumn<?, ?> colHasLearntMusicBefore;
+
+    @FXML
     private TableColumn<?, ?> colLastName;
 
     @FXML
-    private TableColumn<?, ?> colMobile;
+    private TableColumn<?, ?> colSchoolGradeOrProfession;
 
     @FXML
-    private TableColumn<?, ?> colParentName;
-
+    private DatePicker dateBirthday;
 
     @FXML
-    private TableView<?> tblStudentList;
+    private TableView<?> tblStudents;
 
+    @FXML
+    private TextArea txtAddress;
+
+    @FXML
+    private TextField txtContactPersonEmail;
+
+    @FXML
+    private TextField txtContactPersonName;
+
+    @FXML
+    private TextField txtContactPersonNumber;
+
+    @FXML
+    private TextField txtFirstName;
+
+    @FXML
+    private TextField txtLastName;
 
     ManageStudentService manageStudentService = new ManageStudentServiceImpl();
 
 
-    public void initialize(){
+    @FXML
+    public void initialize() {
 
-    // Loading values to the combo boxes
-    // Gender Combo
-    cmbGender.getItems().addAll("Male", "Female", "Other");
-
-    // Adult or Child
-    cmbAdultChild.getItems().addAll("Adult", "Child");
-
-    // Class Type
-    cmbClassType.getItems().addAll("Online", "Physical");
-
-    // Class Schedule
-    for (ClassScheduleDateTime value : ClassScheduleDateTime.values()) {
-        cmbClassSchedule.getItems().add(value.toString());
+tblStudents.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("first_name"));
+tblStudents.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("last_name"));
     }
 
-}
+
     @FXML
     void btnSaveStudentOnAction(ActionEvent event) {
-        // TEXTFIELDS
-        String firstName   = txtFirstNameId.getText();
-        String lastName    = txtLastNameId.getText();
-        String email       = txtEmailId.getText();
-        String mobileNo    = txtMobileNoId.getText();
-        String parentName  = txtParentNameId.getText();
-        String address     = txtAddressId.getText();
-
-        // COMBOBOXES
-        Object gender       = cmbGender.getValue();
-        Object classType    = cmbClassType.getValue();
-        Object requestedClassScheduleDateTIme= cmbClassSchedule.getValue();
-        Object personType   = cmbAdultChild.getValue();
-
-        // DATEPICKER
-        LocalDate dob       = dateDob.getValue();
-
-//        StudentDTO student = StudentDTO.builder()
-//                .studentCode(manageStudentService.getStudentCode())
-//                .firstName(firstName)
-//                .lastName(lastName)
-//                .gender(gender.toString())
-//                .requestedClassScheduleDateTime(requestedClassScheduleDateTIme.toString())
-//                .classType(classType.toString())
-//                .dob(dob)
-//                .email(email)
-//                .personType(personType.toString())
-//                .mobileWhatsApp(mobileNo)
-//                .parentName(parentName)
-//                .address(address)
-//                .status("ACTIVE")
-//                .enrollmentDate(LocalDate.now())
-//                .notes("A sample note can be added here!") //a note filed has to be added in client and let the value to be enter by user
-//                .createdAt(LocalDateTime.now())
-//                .build();
-
-                manageStudentService.saveStudent(new StudentDTO());
-
 
     }
 
+    public void btnUpdateStudentOnAction(ActionEvent actionEvent) {
+    }
+
+    public void btnDeleteStudentOnAction(ActionEvent actionEvent) {
+    }
 }
