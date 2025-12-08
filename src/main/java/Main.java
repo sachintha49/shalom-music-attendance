@@ -22,7 +22,7 @@ public class Main {
 //
 //        for (String recipient : recipients) {
 //
-//            WhatsAppHttpClient.sendTemplateMessage(recipient, templateName);
+//            WhatsAppHttpClient.sendTemplate=Message(recipient, templateName);
 //
 //            try {
 //                Thread.sleep(1000); // 0.1 second
@@ -31,7 +31,7 @@ public class Main {
 //            }
 //        }
         ManageStudentServiceImpl manageStudentService = new ManageStudentServiceImpl();
-        manageStudentService.saveStudent(new StudentDTO());
+//        manageStudentService.saveStudent(new StudentDTO());
         Starter.main(args);
   }
 }

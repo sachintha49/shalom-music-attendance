@@ -1,5 +1,7 @@
 package tm;
 
+import enums.*;
+import javafx.scene.control.Button;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,11 +16,18 @@ import java.time.LocalDate;
 public class StudentTM {
     private String firstName;
     private String lastName;
-    private LocalDate dob;
-    private String classSchedule; // e.g., "MONDAY_SLOT1"
-    private String parentName;
-    private String mobileNumber;
-    private String email;
+    private Gender gender;
+    private LocalDate birthday;
+    private String schoolGradeOrProfession;
+    private Title contactPersonTitle;
+    private String contactPersonName;
+    private String contactPersonNumber;
+    private String contactPersonEmail;
     private String address;
-    private String adultOrChild; // e.g., "Adult" or "Child"
+    private HasStudentLearntMusicBefore hasStudentLearntMusicBefore;
+    private DeliveryMode deliveryMode;
+    private ClassCategory classCategories;
+    private String learningGoals;
+    private String specialNotes;
+    private Button delBtn;
 }

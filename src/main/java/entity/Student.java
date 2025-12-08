@@ -1,5 +1,6 @@
 package entity;
 
+import enums.*;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDate;
@@ -36,7 +37,7 @@ public class Student {
     // Contact Person Information
     @Enumerated(EnumType.STRING)
     @Column(name = "contact_person_title")
-    private ContactTitle contactPersonTitle;
+    private Title contactPersonTitle;
 
     @Column(name = "contact_person_name", nullable = false)
     private String contactPersonName;
@@ -60,7 +61,7 @@ public class Student {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "class_categories", nullable = false)
-    private ClassCategories classCategories;
+    private ClassCategory classCategories;
 
     // Learning Goals & Notes
     @Column(length = 1000)
@@ -69,37 +70,4 @@ public class Student {
     @Column(length = 1000)
     private String specialNotes;
 
-    // -------------------- ENUMS --------------------
-    public enum Gender {
-        MALE, FEMALE, OTHER
-    }
-
-    public enum ContactTitle {
-        MR, MRS, MS, DR, PROF, OTHER
-    }
-
-    public enum DeliveryMode {
-        ONLINE,
-        PHYSICAL
-    }
-
-    public enum CourseEnrolling {
-        GUITAR_UKULELE_VOCAL, PIANO_VOCAL
-    }
-
-    public enum ClassCategories {
-        // Online Classes
-        INTERNATIONAL_ONLINE_INDIVIDUAL_ALL_CATEGORIES,
-        SCHOOL_CLASS_ONLINE_GRADE_6_PLUS_GROUP,
-        ELDERS_CLASS_ONLINE_18_PLUS_GROUP,
-
-        // Physical Classes
-        KIDS_CLASS_PHYSICAL_4_10_GROUP,
-        SCHOOL_CLASS_PHYSICAL_10_18_GROUP,
-        ELDERS_CLASS_PHYSICAL_18_PLUS_PROFESSIONALS_GROUP
-    }
-
-    public enum HasStudentLearntMusicBefore {
-        YES,NO,A_LITTLE_BIT_BASIC_LEVEL
-    }
 }
