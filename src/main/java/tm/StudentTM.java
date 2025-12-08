@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentTM {
+    private Long id;
     private String firstName;
     private String lastName;
     private Gender gender;
@@ -30,4 +31,5 @@ public class StudentTM {
     private String learningGoals;
     private String specialNotes;
     private Button delBtn;
+    private boolean active;
 }
