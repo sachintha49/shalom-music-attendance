@@ -1,5 +1,6 @@
 package dto;
 
+import enums.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -11,30 +12,23 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @ToString
 public class StudentDTO {
-
-    private Long studentId;
-
-    private String studentCode;
-
     private String firstName;
     private String lastName;
-    private String gender;
-    private String classType;
-    private String personType;
+    private Gender gender;
+    private LocalDate birthday;
+    private String schoolGradeOrProfession;
 
-    private LocalDate dob;
-    private LocalDate enrollmentDate;
+    private Title contactPersonTitle;
+    private String contactPersonName;
+    private String contactPersonNumber;
+    private String contactPersonEmail;
 
-    private String email;
-    private String mobileWhatsApp;
-    private String parentName;
     private String address;
 
-    private String requestedClassScheduleDateTime;
-    private String notes;
+    private HasStudentLearntMusicBefore hasStudentLearntMusicBefore;
+    private DeliveryMode deliveryMode;
+    private ClassCategory classCategories;
 
-    private String status;
-
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private String learningGoals;
+    private String specialNotes;
 }

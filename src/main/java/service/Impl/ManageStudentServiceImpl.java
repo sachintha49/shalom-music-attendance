@@ -7,31 +7,48 @@ import service.ManageStudentService;
 import util.HibernateUtil;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class ManageStudentServiceImpl implements ManageStudentService {
-
 
     @Override
     public void saveStudent(StudentDTO studentDTO) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
-        Student student = new Student();
+        Student student = Student.builder()
+                .firstName(studentDTO.getFirstName())
+                .lastName(studentDTO.getLastName())
+                .gender(studentDTO.getGender())
+                .birthday(studentDTO.getBirthday())
+                .schoolGradeOrProfession(studentDTO.getSchoolGradeOrProfession())
+                .contactPersonTitle(studentDTO.getContactPersonTitle())
+                .contactPersonName(studentDTO.getContactPersonName())
+                .contactPersonNumber(studentDTO.getContactPersonNumber())
+                .contactPersonEmail(studentDTO.getContactPersonEmail())
+                .address(studentDTO.getAddress())
+                .hasStudentLearntMusicBefore(studentDTO.getHasStudentLearntMusicBefore())
+                .deliveryMode(studentDTO.getDeliveryMode())
+                .classCategories(studentDTO.getClassCategories())
+                .learningGoals(studentDTO.getLearningGoals())
+                .specialNotes(studentDTO.getSpecialNotes())
+                .build();
 
-        student.setFirstName("Sachin");
-        student.setLastName("Punchihewa");
-        student.setContactPersonEmail("snidhajit@gmail.");
-        student.setGender(Student.Gender.MALE);
-        student.setAddress("address");
-        student.setBirthday(LocalDate.now());
-        student.setClassCategories(Student.ClassCategories.KIDS_CLASS_PHYSICAL_4_10_GROUP);
-        student.setContactPersonName("Rebeccah");
-        student.setContactPersonNumber("0778787336");
-        student.setDeliveryMode(Student.DeliveryMode.ONLINE);
-        student.setSchoolGradeOrProfession("A/L");
+
         session.persist(student);
         session.getTransaction().commit();
         session.close();
         //System.out.println(studentDTO.toString());
         //studentRepository.saveStudent(studentDTO);
     }
+
+    @Override
+    public List<Student> getAllStudents() {
+
+        try(Session session = HibernateUtil.getSessionFactory().openSession()){
+            return session.createQuery("From Student", Student.class).list();
+        }
+
+    }
+
+
 }
