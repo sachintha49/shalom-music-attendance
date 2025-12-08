@@ -1,123 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.text.*?>
-<?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.ManageScheduleClassController"
-            prefWidth="900" prefHeight="650">
+<BorderPane prefHeight="811.0" prefWidth="900" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ManageScheduleClassController">
 
     <top>
-        <Label text="Create Class Schedule"
-               style="-fx-font-size: 24px; -fx-font-weight: bold;"
-               BorderPane.alignment="CENTER" />
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Create Class Schedule" BorderPane.alignment="CENTER" />
     </top>
-
-    <center>
-        <ScrollPane fitToWidth="true">
+   <bottom>
+        <ScrollPane fitToWidth="true" BorderPane.alignment="CENTER">
             <content>
-                <VBox spacing="20">
+                <VBox spacing="20.0">
                     <padding>
-                        <Insets top="20" right="20" bottom="20" left="20"/>
+                        <Insets bottom="20" left="20" right="20" top="20" />
                     </padding>
 
-                    <TitledPane text="Class Information" expanded="true">
+                    <TitledPane expanded="true" text="Class Information">
                         <content>
                             <VBox spacing="10">
                                 <padding>
-                                    <Insets top="10" right="10" bottom="10" left="10"/>
+                                    <Insets bottom="10" left="10" right="10" top="10" />
                                 </padding>
 
                                 <HBox spacing="20">
-                                    <Label text="Schedule Name:"/>
-                                    <TextField fx:id="txtScheduleName" promptText="e.g., Grade 8 Math Class"/>
-                                </HBox>
-
-                                <HBox spacing="20">
-                                    <Label text="Class Type:"/>
-                                    <ComboBox fx:id="cmbClassType" promptText="Select type">
+                                    <Label text="Schedule Name:" />
+                                    <TextField fx:id="txtScheduleName" prefHeight="25.0" prefWidth="375.0" promptText="e.g., Grade 8 Math Class" />
+                                    <Label text="Class Type:" />
+                                    <ComboBox fx:id="cmbClassType" prefHeight="25.0" prefWidth="159.0" promptText="Select type">
                                         <items>
                                             <FXCollections fx:factory="observableArrayList">
-                                                <String fx:value="Online"/>
-                                                <String fx:value="Physical"/>
+                                                <String fx:value="Online" />
+                                                <String fx:value="Physical" />
                                             </FXCollections>
                                         </items>
                                     </ComboBox>
                                 </HBox>
 
+                                <HBox spacing="20" />
+
                                 <HBox spacing="20">
-                                    <Label text="Instructor Name:"/>
-                                    <TextField fx:id="txtInstructor" promptText="Enter instructor"/>
+                                    <Label text="Instructor Name:" />
+                                    <TextField fx:id="txtInstructor" promptText="Enter instructor" />
+                                    <Label text="Zoom Link:" />
+                                    <TextField fx:id="txtZoomLink" prefWidth="300" promptText="https://zoom.us/" />
                                 </HBox>
 
-                                <HBox spacing="20" fx:id="onlineLinkBox">
-                                    <Label text="Zoom Link:"/>
-                                    <TextField fx:id="txtZoomLink" prefWidth="300" promptText="https://zoom.us/"/>
-                                </HBox>
+                                <HBox fx:id="onlineLinkBox" spacing="20" />
 
                             </VBox>
                         </content>
                     </TitledPane>
 
-                    <TitledPane text="Schedule Details" expanded="true">
+                    <TitledPane expanded="true" text="Schedule Details">
                         <content>
                             <VBox spacing="15">
                                 <padding>
-                                    <Insets top="10" right="10" bottom="10" left="10"/>
+                                    <Insets bottom="10" left="10" right="10" top="10" />
                                 </padding>
 
                                 <HBox spacing="20">
-                                    <Label text="Start Date:"/>
-                                    <DatePicker fx:id="dpStartDate"/>
-                                    <Label text="End Date:"/>
-                                    <DatePicker fx:id="dpEndDate"/>
+                                    <Label text="Start Date:" />
+                                    <DatePicker fx:id="dpStartDate" />
+                                    <Label text="End Date:" />
+                                    <DatePicker fx:id="dpEndDate" />
                                 </HBox>
 
                                 <HBox spacing="20">
-                                    <Label text="Start Time:"/>
-                                    <TextField fx:id="txtStartTime" promptText="HH:MM"/>
-                                    <Label text="End Time:"/>
-                                    <TextField fx:id="txtEndTime" promptText="HH:MM"/>
+                                    <Label text="Start Time:" />
+                                    <TextField fx:id="txtStartTime" promptText="HH:MM" />
+                                    <Label text="End Time:" />
+                                    <TextField fx:id="txtEndTime" promptText="HH:MM" />
                                 </HBox>
 
-                                <Label text="Select Days:" style="-fx-font-weight: bold;"/>
+                                <Label style="-fx-font-weight: bold;" text="Select Days:" />
 
                                 <HBox spacing="10">
-                                    <CheckBox fx:id="chkMon" text="Mon"/>
-                                    <CheckBox fx:id="chkTue" text="Tue"/>
-                                    <CheckBox fx:id="chkWed" text="Wed"/>
-                                    <CheckBox fx:id="chkThu" text="Thu"/>
-                                    <CheckBox fx:id="chkFri" text="Fri"/>
-                                    <CheckBox fx:id="chkSat" text="Sat"/>
-                                    <CheckBox fx:id="chkSun" text="Sun"/>
+                                    <CheckBox fx:id="chkMon" text="Mon" />
+                                    <CheckBox fx:id="chkTue" text="Tue" />
+                                    <CheckBox fx:id="chkWed" text="Wed" />
+                                    <CheckBox fx:id="chkThu" text="Thu" />
+                                    <CheckBox fx:id="chkFri" text="Fri" />
+                                    <CheckBox fx:id="chkSat" text="Sat" />
+                                    <CheckBox fx:id="chkSun" text="Sun" />
                                 </HBox>
+                        <CheckBox fx:id="chkMon1" prefHeight="17.0" prefWidth="150.0" text="Save This Template" />
 
                             </VBox>
                         </content>
                     </TitledPane>
 
-                    <TitledPane text="Students" expanded="true">
+                    <TitledPane expanded="true" text="Students">
                         <content>
                             <VBox spacing="15">
                                 <padding>
-                                    <Insets top="10" right="10" bottom="10" left="10"/>
+                                    <Insets bottom="10" left="10" right="10" top="10" />
                                 </padding>
 
                                 <HBox spacing="10">
-                                    <Label text="Add Student:"/>
-                                    <TextField fx:id="txtSearchStudent" promptText="Name or ID"/>
-                                    <Button text="Add" onAction="#onAddStudent"/>
+                                    <Label text="Add Student:" />
+                                    <TextField fx:id="txtSearchStudent" promptText="Name or ID" />
+                                    <Button onAction="#onAddStudent" text="Add" />
                                 </HBox>
 
                                 <TableView fx:id="tblStudents" prefHeight="200">
                                     <columns>
-                                        <TableColumn fx:id="colStudentName" text="Student Name" prefWidth="200"/>
-                                        <TableColumn fx:id="colParentNumber" text="Parent Number" prefWidth="150"/>
-                                        <TableColumn fx:id="colAction" text="Remove" prefWidth="100"/>
+                                        <TableColumn fx:id="colStudentName" prefWidth="200" text="Student Name" />
+                                        <TableColumn fx:id="colParentNumber" prefWidth="150" text="Parent Number" />
+                                        <TableColumn fx:id="colAction" prefWidth="100" text="Remove" />
                                     </columns>
                                 </TableView>
 
@@ -125,45 +129,11 @@
                         </content>
                     </TitledPane>
 
-                    <TitledPane text="Notification and Reminders" expanded="true">
-                        <content>
-                            <VBox spacing="15">
-                                <padding>
-                                    <Insets top="10" right="10" bottom="10" left="10"/>
-                                </padding>
-
-                                <HBox spacing="20">
-                                    <Label text="Reminder Time:"/>
-                                    <ComboBox fx:id="cmbReminder">
-                                        <items>
-                                            <FXCollections fx:factory="observableArrayList">
-                                                <String fx:value="5 minutes"/>
-                                                <String fx:value="10 minutes"/>
-                                                <String fx:value="30 minutes"/>
-                                                <String fx:value="1 hour"/>
-                                                <String fx:value="2 hours"/>
-                                                <String fx:value="1 day"/>
-                                            </FXCollections>
-                                        </items>
-                                    </ComboBox>
-                                </HBox>
-
-                                <HBox spacing="20">
-                                    <Label text="Notes:"/>
-                                    <TextArea fx:id="txtNotes" prefWidth="300" prefHeight="100"/>
-                                </HBox>
-
-                            </VBox>
-                        </content>
-                    </TitledPane>
-
-                    <Button text="Save Schedule"
-                            style="-fx-font-size: 18px; -fx-padding: 10 20;"
-                            onAction="#onSaveSchedule"/>
+                    <Button onAction="#onSaveSchedule" style="-fx-font-size: 18px; -fx-padding: 10 20;" text="Save Schedule" VBox.vgrow="NEVER" />
 
                 </VBox>
             </content>
         </ScrollPane>
-    </center>
+   </bottom>
 
 </BorderPane>

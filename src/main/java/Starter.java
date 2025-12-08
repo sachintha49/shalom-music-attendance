@@ -15,7 +15,7 @@ public class Starter extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/ManageStudent.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/ScheduleNewClass.fxml"));
             Parent root = fxmlLoader.load();
             primaryStage.setTitle("Shalom Music School - Attendance System");
             primaryStage.setScene(new Scene(root));
