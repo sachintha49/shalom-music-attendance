@@ -3,10 +3,10 @@ package service.Impl;
 import dto.StudentDTO;
 import entity.Student;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import service.ManageStudentService;
 import util.HibernateUtil;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class ManageStudentServiceImpl implements ManageStudentService {
@@ -31,15 +31,36 @@ public class ManageStudentServiceImpl implements ManageStudentService {
                 .classCategories(studentDTO.getClassCategories())
                 .learningGoals(studentDTO.getLearningGoals())
                 .specialNotes(studentDTO.getSpecialNotes())
+                .active(studentDTO.isActive())
                 .build();
 
 
         session.persist(student);
         session.getTransaction().commit();
         session.close();
-        //System.out.println(studentDTO.toString());
-        //studentRepository.saveStudent(studentDTO);
     }
+
+    @Override
+    public void setStudentInactive(Long id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            Student student = session.get(Student.class, id);
+            if (student != null) {
+                student.setActive(false);
+            }
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+
 
     @Override
     public List<Student> getAllStudents() {

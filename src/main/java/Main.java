@@ -22,7 +22,7 @@ public class Main {
 //
 //        for (String recipient : recipients) {
 //
-//            WhatsAppHttpClient.sendTemplate=Message(recipient, templateName);
+//            WhatsAppHttpClient.sendTemplateMessage(recipient, templateName);
 //
 //            try {
 //                Thread.sleep(1000); // 0.1 second
