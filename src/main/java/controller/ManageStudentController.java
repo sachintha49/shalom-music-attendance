@@ -6,8 +6,10 @@ import enums.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import service.Impl.ManageStudentServiceImpl;
 import service.ManageStudentService;
 import tm.StudentTM;
@@ -18,22 +20,22 @@ import java.util.List;
 public class ManageStudentController {
 
     @FXML
-    private ComboBox<?> cmbClassCategories;
+    private ComboBox<ClassCategory> cmbClassCategories;
 
     @FXML
-    private ComboBox<?> cmbContactTitle;
+    private ComboBox<Title> cmbContactTitle;
 
     @FXML
-    private ComboBox<?> cmbDeliveryMode;
+    private ComboBox<DeliveryMode> cmbDeliveryMode;
 
     @FXML
-    private ComboBox<?> cmbGender;
+    private ComboBox<Gender> cmbGender;
 
     @FXML
-    private ComboBox<?> cmbHasLearntMusicBefore;
+    private ComboBox<HasStudentLearntMusicBefore> cmbHasLearntMusicBefore;
 
     @FXML
-    private TableColumn<?, ?> colActions;
+    private TableColumn<StudentTM, Button> colActions;
 
     @FXML
     private TableColumn<?, ?> colAddress;
@@ -100,6 +102,12 @@ public class ManageStudentController {
 
     @FXML
     public void initialize() {
+        cmbGender.getItems().setAll(Gender.values());
+        cmbContactTitle.getItems().setAll(Title.values());
+        cmbHasLearntMusicBefore.getItems().setAll(HasStudentLearntMusicBefore.values());
+        cmbDeliveryMode.getItems().setAll(DeliveryMode.values());
+        cmbClassCategories.getItems().setAll(ClassCategory.values());
+
         tblStudents.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("firstName"));
         tblStudents.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("lastName"));
         tblStudents.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("gender"));
@@ -114,6 +122,26 @@ public class ManageStudentController {
         tblStudents.getColumns().get(11).setCellValueFactory(new PropertyValueFactory<>("classCategories"));
         tblStudents.getColumns().get(12).setCellValueFactory(new PropertyValueFactory<>("delBtn"));
 
+        colActions.setCellFactory(column -> new TableCell<StudentTM, Button>() {
+            @Override
+            protected void updateItem(Button btn, boolean empty) {
+                super.updateItem(btn, empty);
+
+                if (empty || btn == null) {
+                    setGraphic(null);
+                } else {
+                    // Center alignment
+                    HBox hbox = new HBox(btn);
+                    hbox.setAlignment(Pos.CENTER);
+                    hbox.setSpacing(0);
+
+                    setGraphic(hbox);
+                }
+            }
+        });
+
+
+
         StudentTM student = new StudentTM();
 
         tblStudents.getItems().add(student);
@@ -121,36 +149,25 @@ public class ManageStudentController {
         loadAllStudents();
     }
 
-
     @FXML
     void btnSaveStudentOnAction(ActionEvent event) {
         System.out.println(txtFirstName.getText());
-        // txtFirstnameue
-        // cmbGender.getValue.toStirng
         StudentDTO studentDTO = StudentDTO.builder()
                 .firstName(txtFirstName.getText())
                 .lastName(txtLastName.getText())
-//                .gender(Gender.valueOf(cmbGender.getValue()))
-                .gender(Gender.MALE)
+                .gender(cmbGender.getValue())
                 .birthday(dateBirthday.getValue())
-                .schoolGradeOrProfession(txtContactPersonName.getText())
-//                .contactPersonTitle(Title.valueOf(cmbContactTitle.getValue()))
-                .contactPersonTitle(Title.MR)
+                .schoolGradeOrProfession(colSchoolGradeOrProfession.getText())
+                .contactPersonTitle(cmbContactTitle.getValue())
                 .contactPersonName(txtContactPersonName.getText())
                 .contactPersonNumber(txtContactPersonNumber.getText())
                 .contactPersonEmail(txtContactPersonEmail.getText())
                 .address(txtAddress.getText())
-//                .hasStudentLearntMusicBefore(cmbHasLearntMusicBefore.getValue())
-                .hasStudentLearntMusicBefore(HasStudentLearntMusicBefore.A_LITTLE_BIT_BASIC_LEVEL)
-//                .deliveryMode(DeliveryMode.valueOf(cmbDeliveryMode.getValue()))
-                .deliveryMode(DeliveryMode.ONLINE)
-//                .classCategories(ClassCategory.valueOf(cmbClassCategories.getValue()))
-                .classCategories(ClassCategory.KIDS_CLASS_PHYSICAL_4_10_GROUP)
-//                .learningGoals(txtLearningGoals.getText())
-//                .specialNotes(txtSpecialNotes.getText())
+                .hasStudentLearntMusicBefore(cmbHasLearntMusicBefore.getValue())
+                .deliveryMode(cmbDeliveryMode.getValue())
+                .classCategories(cmbClassCategories.getValue())
+                .active(true)
                 .build();
-
-
         manageStudentService.saveStudent(studentDTO);
 
         loadAllStudents();
@@ -163,29 +180,55 @@ public class ManageStudentController {
     public void btnDeleteStudentOnAction(ActionEvent actionEvent) {
     }
 
-    public void loadAllStudents(){
+    private void setStudentInactive(Long id) {
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION,
+                "Are you sure you want to mark this student as inactive?",
+                ButtonType.YES, ButtonType.NO);
+        confirm.showAndWait();
+
+        if (confirm.getResult() == ButtonType.YES) {
+            manageStudentService.setStudentInactive(id);
+            loadAllStudents();
+        }
+    }
+
+
+    public void loadAllStudents() {
         tblStudents.getItems().clear();
 
-        manageStudentService.getAllStudents().forEach(dto -> tblStudents.getItems().add(
-                StudentTM.builder()
-                        .firstName(dto.getFirstName())
-                        .lastName(dto.getLastName())
-                        .gender(dto.getGender())
-                        .birthday(dto.getBirthday())
-                        .schoolGradeOrProfession(dto.getSchoolGradeOrProfession())
-                        .contactPersonTitle(dto.getContactPersonTitle())
-                        .contactPersonName(dto.getContactPersonName())
-                        .contactPersonNumber(dto.getContactPersonNumber())
-                        .contactPersonEmail(dto.getContactPersonEmail())
-                        .address(dto.getAddress())
-                        .hasStudentLearntMusicBefore(dto.getHasStudentLearntMusicBefore())
-                        .deliveryMode(dto.getDeliveryMode())
-                        .classCategories(dto.getClassCategories())
-                        .learningGoals(dto.getLearningGoals())
-                        .specialNotes(dto.getSpecialNotes())
-                        .delBtn(new Button("Delete"))
-                        .build()
-        ));
+        manageStudentService.getAllStudents().stream()
+                .filter(Student::isActive) .forEach(dto -> {
 
-    }
-}
+            Button btnInactive = new Button("Inactive");
+            btnInactive.setStyle("-fx-background-color: #ff9900; -fx-text-fill: white;");
+
+            StudentTM tm = StudentTM.builder()
+                    .id(dto.getId())
+                    .firstName(dto.getFirstName())
+                    .lastName(dto.getLastName())
+                    .gender(dto.getGender())
+                    .birthday(dto.getBirthday())
+                    .schoolGradeOrProfession(dto.getSchoolGradeOrProfession())
+                    .contactPersonTitle(dto.getContactPersonTitle())
+                    .contactPersonName(dto.getContactPersonName())
+                    .contactPersonNumber(dto.getContactPersonNumber())
+                    .contactPersonEmail(dto.getContactPersonEmail())
+                    .address(dto.getAddress())
+                    .hasStudentLearntMusicBefore(dto.getHasStudentLearntMusicBefore())
+                    .deliveryMode(dto.getDeliveryMode())
+                    .classCategories(dto.getClassCategories())
+                    .learningGoals(dto.getLearningGoals())
+                    .specialNotes(dto.getSpecialNotes())
+                    .delBtn(btnInactive)
+                    .build();
+
+            btnInactive.setOnAction(event -> {
+                setStudentInactive(tm.getId());
+            });
+
+            tblStudents.getItems().add(tm);
+        });
+    }}
+
+
+

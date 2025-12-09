@@ -70,4 +70,5 @@ public class Student {
     @Column(length = 1000)
     private String specialNotes;
 
+    private boolean active = true;
 }

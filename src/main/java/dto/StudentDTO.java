@@ -4,7 +4,6 @@ import enums.*;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Data
 @Builder
@@ -12,6 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @ToString
 public class StudentDTO {
+    private Long id;
     private String firstName;
     private String lastName;
     private Gender gender;
@@ -31,4 +31,5 @@ public class StudentDTO {
 
     private String learningGoals;
     private String specialNotes;
+    private boolean active;
 }
