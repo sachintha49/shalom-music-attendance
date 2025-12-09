@@ -13,28 +13,24 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Priority?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="830.0" prefWidth="1427.0"
-            xmlns:fx="http://javafx.com/fxml/1"
-            xmlns="http://javafx.com/javafx/19"
-            fx:controller="controller.DashboardController">
+<BorderPane fx:id="root" prefHeight="830.0" prefWidth="1427.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
 
     <!-- Top Header -->
     <top>
-        <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: #2c3e50;">
+        <HBox alignment="CENTER_LEFT" spacing="20" style="-fx-background-color: #2c3e50;">
             <padding>
-                <Insets top="10" right="15" bottom="10" left="15"/>
+                <Insets bottom="10" left="15" right="15" top="10" />
             </padding>
             <children>
-                <ImageView fx:id="logoImageView" fitHeight="40" fitWidth="40"/>
-                <Label text="Shalom Music School" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"/>
-                <Region HBox.hgrow="ALWAYS"/>
-                <Label fx:id="currentTimeLabel" text="Time &amp; Date" style="-fx-text-fill: white;"/>
-                <Label fx:id="userNameLabel" text="Admin" style="-fx-text-fill: white;"/>
-                <Button fx:id="notificationsButton" text="🔔"/>
+                <ImageView fx:id="logoImageView" fitHeight="40" fitWidth="40" />
+                <Label style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;" text="Shalom Music School" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="currentTimeLabel" style="-fx-text-fill: white;" text="Time &amp; Date" />
+                <Label fx:id="userNameLabel" style="-fx-text-fill: white;" text="Admin" />
+                <Button fx:id="notificationsButton" text="🔔" />
             </children>
         </HBox>
     </top>
@@ -43,92 +39,92 @@
     <center>
         <VBox spacing="25">
             <padding>
-                <Insets top="15" right="15" bottom="15" left="15"/>
+                <Insets bottom="15" left="15" right="15" top="15" />
             </padding>
 
             <!-- Quick Stats Cards -->
-            <HBox spacing="20" alignment="CENTER">
-                <VBox prefWidth="200" spacing="5" alignment="CENTER" style="-fx-background-color: #3498DB; -fx-border-radius: 5; -fx-background-radius: 5;">
+            <HBox alignment="CENTER" spacing="20">
+                <VBox alignment="CENTER" prefWidth="200" spacing="5" style="-fx-background-color: #3498DB; -fx-border-radius: 5; -fx-background-radius: 5;">
                     <padding>
-                        <Insets top="20" right="20" bottom="20" left="20"/>
+                        <Insets bottom="20" left="20" right="20" top="20" />
                     </padding>
-                    <Label text="Total Students" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
-                    <Label fx:id="totalStudentsLabel" text="0" style="-fx-font-size: 24px; -fx-text-fill: white;"/>
+                    <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="Total Students" />
+                    <Label fx:id="totalStudentsLabel" style="-fx-font-size: 24px; -fx-text-fill: white;" text="0" />
                 </VBox>
 
-                <VBox prefWidth="200" spacing="5" alignment="CENTER" style="-fx-background-color: #1ABC9C; -fx-border-radius: 5; -fx-background-radius: 5;">
+                <VBox alignment="CENTER" prefWidth="200" spacing="5" style="-fx-background-color: #1ABC9C; -fx-border-radius: 5; -fx-background-radius: 5;">
                     <padding>
-                        <Insets top="20" right="20" bottom="20" left="20"/>
+                        <Insets bottom="20" left="20" right="20" top="20" />
                     </padding>
-                    <Label text="Upcoming Classes Today" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
-                    <Label fx:id="upcomingClassesLabel" text="0" style="-fx-font-size: 24px; -fx-text-fill: white;"/>
+                    <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="Upcoming Classes Today" />
+                    <Label fx:id="upcomingClassesLabel" style="-fx-font-size: 24px; -fx-text-fill: white;" text="0" />
                 </VBox>
 
-                <VBox prefWidth="200" spacing="5" alignment="CENTER" style="-fx-background-color: #F39C12; -fx-border-radius: 5; -fx-background-radius: 5;">
+                <VBox alignment="CENTER" prefWidth="200" spacing="5" style="-fx-background-color: #F39C12; -fx-border-radius: 5; -fx-background-radius: 5;">
                     <padding>
-                        <Insets top="20" right="20" bottom="20" left="20"/>
+                        <Insets bottom="20" left="20" right="20" top="20" />
                     </padding>
-                    <Label text="Pending Reminders" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
-                    <Label fx:id="pendingRemindersLabel" text="0" style="-fx-font-size: 24px; -fx-text-fill: white;"/>
+                    <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="Pending Reminders" />
+                    <Label fx:id="pendingRemindersLabel" style="-fx-font-size: 24px; -fx-text-fill: white;" text="0" />
                 </VBox>
 
-                <VBox prefWidth="200" spacing="5" alignment="CENTER" style="-fx-background-color: #9B59B6; -fx-border-radius: 5; -fx-background-radius: 5;">
+                <VBox alignment="CENTER" prefWidth="200" spacing="5" style="-fx-background-color: #9B59B6; -fx-border-radius: 5; -fx-background-radius: 5;">
                     <padding>
-                        <Insets top="20" right="20" bottom="20" left="20"/>
+                        <Insets bottom="20" left="20" right="20" top="20" />
                     </padding>
-                    <Label text="Fee Payment Status" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
-                    <Label fx:id="feeStatusLabel" text="0 Paid / 0 Pending" style="-fx-font-size: 18px; -fx-text-fill: white;"/>
+                    <Label style="-fx-text-fill: white; -fx-font-weight: bold;" text="Fee Payment Status" />
+                    <Label fx:id="feeStatusLabel" style="-fx-font-size: 18px; -fx-text-fill: white;" text="0 Paid / 0 Pending" />
                 </VBox>
             </HBox>
 
             <!-- Upcoming Classes + Birthday Alerts -->
-            <HBox spacing="20" alignment="TOP_LEFT">
+            <HBox alignment="TOP_LEFT" spacing="20">
                 <VBox spacing="10" HBox.hgrow="ALWAYS">
-                    <Label text="Upcoming Classes" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+                    <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="Upcoming Classes" />
                     <TableView fx:id="upcomingClassesTable" prefHeight="200">
                         <columns>
-                            <TableColumn fx:id="classTimeCol" text="Time"/>
-                            <TableColumn fx:id="classNameCol" text="Class Name"/>
-                            <TableColumn fx:id="instructorCol" text="Instructor"/>
-                            <TableColumn fx:id="classTypeCol" text="Type"/>
-                            <TableColumn fx:id="numStudentsCol" text="Students"/>
-                            <TableColumn fx:id="statusCol" text="Status"/>
+                            <TableColumn fx:id="classTimeCol" text="Time" />
+                            <TableColumn fx:id="classNameCol" text="Class Name" />
+                            <TableColumn fx:id="instructorCol" text="Instructor" />
+                            <TableColumn fx:id="classTypeCol" text="Type" />
+                            <TableColumn fx:id="numStudentsCol" text="Students" />
+                            <TableColumn fx:id="statusCol" text="Status" />
                         </columns>
                     </TableView>
                 </VBox>
 
-                <VBox spacing="10" prefWidth="300" style="-fx-background-color: #ecf0f1; -fx-border-radius: 5; -fx-background-radius: 5;">
+                <VBox prefWidth="300" spacing="10" style="-fx-background-color: #ecf0f1; -fx-border-radius: 5; -fx-background-radius: 5;">
                     <padding>
-                        <Insets top="10" right="10" bottom="10" left="10"/>
+                        <Insets bottom="10" left="10" right="10" top="10" />
                     </padding>
-                    <Label text="Upcoming Birthdays" style="-fx-font-weight: bold;"/>
-                    <ListView fx:id="birthdayListView" prefHeight="200"/>
+                    <Label style="-fx-font-weight: bold;" text="Upcoming Birthdays" />
+                    <ListView fx:id="birthdayListView" prefHeight="200" />
                 </VBox>
             </HBox>
 
             <!-- Charts + Payment Reminders -->
-            <HBox spacing="20" alignment="TOP_LEFT">
+            <HBox alignment="TOP_LEFT" spacing="20">
                 <VBox spacing="10" HBox.hgrow="ALWAYS">
-                    <Label text="Monthly Revenue" style="-fx-font-weight: bold;"/>
+                    <Label style="-fx-font-weight: bold;" text="Monthly Revenue" />
                     <BarChart fx:id="revenueChart" prefHeight="250" title="Monthly Revenue">
                         <xAxis>
-                            <CategoryAxis label="Month"/>
+                            <CategoryAxis label="Month" />
                         </xAxis>
                         <yAxis>
-                            <NumberAxis label="Revenue ($)"/>
+                            <NumberAxis label="Revenue ($)" />
                         </yAxis>
                     </BarChart>
                 </VBox>
 
                 <VBox spacing="10" HBox.hgrow="ALWAYS">
-                    <Label text="Pending Payment Reminders" style="-fx-font-weight: bold;"/>
+                    <Label style="-fx-font-weight: bold;" text="Pending Payment Reminders" />
                     <TableView fx:id="paymentRemindersTable" prefHeight="250">
                         <columns>
-                            <TableColumn fx:id="reminderStudentCol" text="Student"/>
-                            <TableColumn fx:id="reminderParentCol" text="Parent"/>
-                            <TableColumn fx:id="reminderAmountCol" text="Amount"/>
-                            <TableColumn fx:id="reminderDueDateCol" text="Due Date"/>
-                            <TableColumn fx:id="reminderStatusCol" text="Status"/>
+                            <TableColumn fx:id="reminderStudentCol" text="Student" />
+                            <TableColumn fx:id="reminderParentCol" text="Parent" />
+                            <TableColumn fx:id="reminderAmountCol" text="Amount" />
+                            <TableColumn fx:id="reminderDueDateCol" text="Due Date" />
+                            <TableColumn fx:id="reminderStatusCol" text="Status" />
                         </columns>
                     </TableView>
                 </VBox>
@@ -136,23 +132,23 @@
 
             <!-- Quick Actions -->
             <VBox spacing="10">
-                <Label text="Quick Actions" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+                <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="Quick Actions" />
                 <HBox spacing="15">
-                    <Button fx:id="newClassButton" text="Schedule New Class" prefWidth="150"/>
-                    <Button fx:id="addStudentButton" text="Add New Student" prefWidth="150"/>
-                    <Button fx:id="sendRemindersButton" text="Send WhatsApp Reminders" prefWidth="200"/>
-                    <Button fx:id="viewReportsButton" text="View Reports" prefWidth="150"/>
+                    <Button fx:id="newClassButton" onMouseClicked="#mouseClickScheduleNewClassOnAction" prefWidth="150" text="Schedule New Class" />
+                    <Button fx:id="addStudentButton" onMouseClicked="#mouseClickAddNewStudentOnAction" prefWidth="150" text="Add New Student" />
+                    <Button fx:id="sendRemindersButton" prefWidth="200" text="Send WhatsApp Reminders" />
+                    <Button fx:id="viewReportsButton" prefWidth="150" text="View Reports" />
                 </HBox>
             </VBox>
 
             <!-- Recent Activity -->
             <VBox spacing="10">
-                <Label text="Recent Activity / Notifications" style="-fx-font-weight: bold; -fx-font-size: 14;"/>
+                <Label style="-fx-font-weight: bold; -fx-font-size: 14;" text="Recent Activity / Notifications" />
                 <TableView fx:id="recentActivityTable" prefHeight="150">
                     <columns>
-                        <TableColumn fx:id="activityTimeCol" text="Time"/>
-                        <TableColumn fx:id="activityDescCol" text="Activity Description"/>
-                        <TableColumn fx:id="activityUserCol" text="User"/>
+                        <TableColumn fx:id="activityTimeCol" text="Time" />
+                        <TableColumn fx:id="activityDescCol" text="Activity Description" />
+                        <TableColumn fx:id="activityUserCol" text="User" />
                     </columns>
                 </TableView>
             </VBox>
@@ -162,13 +158,13 @@
 
     <!-- Footer -->
     <bottom>
-        <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-background-color: #bdc3c7;">
+        <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: #bdc3c7;">
             <padding>
-                <Insets top="10" right="15" bottom="10" left="15"/>
+                <Insets bottom="10" left="15" right="15" top="10" />
             </padding>
-            <Label text="Version 1.0"/>
-            <Region HBox.hgrow="ALWAYS"/>
-            <Hyperlink text="Support"/>
+            <Label text="Version 1.0" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Hyperlink text="Support" />
         </HBox>
     </bottom>
 
